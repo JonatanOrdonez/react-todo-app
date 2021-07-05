@@ -20,6 +20,18 @@
         "react"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-indent-props": [
+            2,
+            "tab"
+        ],
+        "indent": [
+            2,
+            "tab",
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": 1
+            }
+        ],
     }
 }
