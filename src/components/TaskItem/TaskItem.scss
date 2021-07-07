@@ -1,0 +1,20 @@
+.taskItem {
+    margin: 1% 0;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &__checkbox {
+
+    }
+    &__title {
+        width: 100%;
+    }
+      &__input {
+        width: 100%;
+    }
+    &__buttons {
+        display: flex;
+    }
+}

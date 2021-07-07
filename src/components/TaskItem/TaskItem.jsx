@@ -1,0 +1,69 @@
+import React, { useContext, useState } from "react";
+import Card from "@material-ui/core/Card";
+import Checkbox from "@material-ui/core/Checkbox";
+import "./TaskItem.scss";
+import AppContext from "../../store/AppContext";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import UpdateIcon from "@material-ui/icons/Update";
+import TextField from "@material-ui/core/TextField";
+import SaveIcon from "@material-ui/icons/Save";
+
+const TaskItem = ({ id, title, completed }) => {
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [text, setText] = useState(title);
+
+  const state = useContext(AppContext);
+  const handleCheck = (event) => {
+    state.setTaskStatus(id, event.target.checked);
+  };
+
+  const handleDelete = () => {
+    state.deleteTask(id);
+  };
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  return (
+    <Card className="taskItem">
+      <div className="taskItem__checkbox">
+        <Checkbox checked={completed} onChange={handleCheck} />
+      </div>
+      <div className="taskItem__title">
+        {isUpdating ? (
+          <TextField
+            className="taskItem__input"
+            label="task..."
+            value={text}
+            onChange={handleChange}
+          />
+        ) : (
+          <p>{text}</p>
+        )}
+      </div>
+      <div className="taskItem__buttons">
+        {isUpdating ? (
+          <IconButton
+            color="primary"
+            onClick={() => setIsUpdating(false)}
+            disabled={!text.length}
+          >
+            <SaveIcon />
+          </IconButton>
+        ) : (
+          <IconButton color="primary" onClick={() => setIsUpdating(true)}>
+            <UpdateIcon />
+          </IconButton>
+        )}
+
+        <IconButton color="secondary" onClick={handleDelete}>
+          <DeleteIcon />
+        </IconButton>
+      </div>
+    </Card>
+  );
+};
+
+export default TaskItem;

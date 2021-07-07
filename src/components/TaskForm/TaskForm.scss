@@ -1,0 +1,15 @@
+.taskForm {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    &__input {
+        width: 100%;
+    }
+}
+
+.MuiFormControl-root {
+    width: 100%;
+}
