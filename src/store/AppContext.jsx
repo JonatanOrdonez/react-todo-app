@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SORT_TYPE_ASC, SORT_TYPE_DESC } from "../constants/sort";
 
 const AppContext = React.createContext();
 
@@ -28,7 +29,24 @@ export const AppContextWrapper = ({ children }) => {
     setTasks(tasksUpdated);
   };
 
-  const state = { tasks, setTasks, setTaskStatus, deleteTask, saveTask };
+  const sortTasks = (sortType) => {
+    const tasksCopy = tasks.map((task) => task);
+    if (sortType === SORT_TYPE_ASC) {
+      tasksCopy.sort((a, b) => (a.title > b.title ? 1 : -1));
+    } else if (sortType === SORT_TYPE_DESC) {
+      tasksCopy.sort((a, b) => (a.title < b.title ? 1 : -1));
+    }
+    setTasks(tasksCopy);
+  };
+
+  const state = {
+    tasks,
+    setTasks,
+    setTaskStatus,
+    deleteTask,
+    saveTask,
+    sortTasks,
+  };
 
   return (
     <AppContext.Provider value={state} displayName="AppContext">

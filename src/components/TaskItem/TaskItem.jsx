@@ -10,10 +10,11 @@ import TextField from "@material-ui/core/TextField";
 import SaveIcon from "@material-ui/icons/Save";
 
 const TaskItem = ({ id, title, completed }) => {
+  const state = useContext(AppContext);
+
   const [isUpdating, setIsUpdating] = useState(false);
   const [text, setText] = useState(title);
 
-  const state = useContext(AppContext);
   const handleCheck = (event) => {
     state.setTaskStatus(id, event.target.checked);
   };
@@ -35,7 +36,7 @@ const TaskItem = ({ id, title, completed }) => {
         {isUpdating ? (
           <TextField
             className="taskItem__input"
-            label="task..."
+            label="Tarea..."
             value={text}
             onChange={handleChange}
           />

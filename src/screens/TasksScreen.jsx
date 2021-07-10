@@ -1,24 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import axios from "axios";
 import AppContext from "../store/AppContext";
 import TasksList from "../components/TasksList/TasksList";
 import "./TasksScreen.scss";
 import TaskForm from "../components/TaskForm/TaskForm";
+import getTasks from "../services/getTasks";
+import TasksSorter from "../components/TasksSorter/TasksSorter";
 
 const TasksScreen = () => {
   const state = useContext(AppContext);
 
   const loadTasks = async () => {
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos"
-      );
-      const tasks = response.data.slice(0, 5);
-      console.log(tasks);
-      state.setTasks(tasks);
-    } catch (error) {
-      console.log(error.message);
-    }
+    const tasks = await getTasks();
+    state.setTasks(tasks);
   };
 
   useEffect(() => {
@@ -28,6 +21,7 @@ const TasksScreen = () => {
   return (
     <div className="tasksScreen">
       <TaskForm />
+      <TasksSorter />
       <TasksList />
     </div>
   );
