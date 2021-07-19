@@ -24,6 +24,19 @@ export const AppContextWrapper = ({ children }) => {
     setTasks(tasksUpdated);
   };
 
+  const updateTask = (id, title) => {
+    const tasksUpdated = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          title,
+        };
+      }
+      return task;
+    });
+    setTasks(tasksUpdated);
+  };
+
   const saveTask = (task) => {
     const tasksUpdated = [...tasks, task];
     setTasks(tasksUpdated);
@@ -45,6 +58,7 @@ export const AppContextWrapper = ({ children }) => {
     setTaskStatus,
     deleteTask,
     saveTask,
+    updateTask,
     sortTasks,
   };
 

@@ -27,8 +27,23 @@ const TaskItem = ({ id, title, completed }) => {
     setText(event.target.value);
   };
 
+  const handleUpdate = () => {
+    setIsUpdating(false);
+    state.updateTask(id, text);
+  };
+
+  const handleKeyDown = (event) => {
+    if (String(event.key).toLowerCase() === "enter" && text.length) {
+      handleUpdate();
+    }
+  };
+
+  const handleDoubleClick = () => {
+    setIsUpdating(true);
+  };
+
   return (
-    <Card className="taskItem">
+    <Card className="taskItem" onDoubleClick={handleDoubleClick}>
       <div className="taskItem__checkbox">
         <Checkbox checked={completed} onChange={handleCheck} />
       </div>
@@ -39,6 +54,7 @@ const TaskItem = ({ id, title, completed }) => {
             label="Tarea..."
             value={text}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         ) : (
           <p>{text}</p>
@@ -48,7 +64,7 @@ const TaskItem = ({ id, title, completed }) => {
         {isUpdating ? (
           <IconButton
             color="primary"
-            onClick={() => setIsUpdating(false)}
+            onClick={handleUpdate}
             disabled={!text.length}
           >
             <SaveIcon />
