@@ -5,7 +5,7 @@ import "./TaskItem.scss";
 import AppContext from "../../store/AppContext";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import UpdateIcon from "@material-ui/icons/Update";
+import CreateIcon from "@material-ui/icons/Create";
 import TextField from "@material-ui/core/TextField";
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -71,7 +71,7 @@ const TaskItem = ({ id, title, completed }) => {
           </IconButton>
         ) : (
           <IconButton color="primary" onClick={() => setIsUpdating(true)}>
-            <UpdateIcon />
+            <CreateIcon />
           </IconButton>
         )}
 
