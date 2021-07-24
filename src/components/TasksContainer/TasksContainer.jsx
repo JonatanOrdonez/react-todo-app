@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import AppContext from "../../store/AppContext";
+import TasksList from "../TasksList/TasksList";
+import "./TasksContainer.scss";
 
 const TasksContainer = () => {
   const state = useContext(AppContext);
@@ -12,7 +14,6 @@ const TasksContainer = () => {
       );
 
       const tasks = response.data.slice(0, 5);
-      console.log(tasks);
       state.setTasks(tasks);
     } catch (error) {}
   };
@@ -21,7 +22,11 @@ const TasksContainer = () => {
     loadTasks();
   }, []);
 
-  return <p>Taskscontainer</p>;
+  return (
+    <div className="tasksContainer">
+      <TasksList />
+    </div>
+  );
 };
 
 export default TasksContainer;
