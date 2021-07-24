@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as uuid from "uuid";
 
 const AppContext = React.createContext();
 
@@ -19,7 +20,19 @@ export const AppContextWrapper = (props) => {
     setTasks(tasksUpdated);
   };
 
-  const state = { tasks, setTasks, setTaskStatus };
+  const saveTask = (title) => {
+    const newTask = {
+      id: uuid.v1(),
+      completed: false,
+      userId: uuid.v1(),
+      title,
+    };
+
+    const newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+  };
+
+  const state = { tasks, setTasks, setTaskStatus, saveTask };
 
   return (
     <AppContext.Provider value={state} displayName="AppContext">

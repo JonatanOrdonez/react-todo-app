@@ -20,6 +20,7 @@ const TaskItem = ({ id, completed, title }) => {
           onChange={(event) => handleCheck(event)}
         />
       </div>
+      <p>{title}</p>
     </Card>
   );
 };

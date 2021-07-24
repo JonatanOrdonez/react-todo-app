@@ -3,6 +3,7 @@ import axios from "axios";
 import AppContext from "../../store/AppContext";
 import TasksList from "../TasksList/TasksList";
 import "./TasksContainer.scss";
+import TaskForm from "../TaskForm/TaskForm";
 
 const TasksContainer = () => {
   const state = useContext(AppContext);
@@ -24,6 +25,7 @@ const TasksContainer = () => {
 
   return (
     <div className="tasksContainer">
+      <TaskForm />
       <TasksList />
     </div>
   );
