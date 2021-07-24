@@ -4,6 +4,7 @@ import AppContext from "../../store/AppContext";
 import TasksList from "../TasksList/TasksList";
 import "./TasksContainer.scss";
 import TaskForm from "../TaskForm/TaskForm";
+import TasksSorter from "../TasksSorter/TasksSorter";
 
 const TasksContainer = () => {
   const state = useContext(AppContext);
@@ -26,6 +27,7 @@ const TasksContainer = () => {
   return (
     <div className="tasksContainer">
       <TaskForm />
+      <TasksSorter />
       <TasksList />
     </div>
   );
