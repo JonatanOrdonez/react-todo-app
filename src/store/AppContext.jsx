@@ -21,6 +21,20 @@ export const AppContextWrapper = (props) => {
     setTasks(tasksUpdated);
   };
 
+  const setTaskTitle = (id, newTitle) => {
+    const tasksUpdated = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          title: newTitle,
+        };
+      }
+      return task;
+    });
+
+    setTasks(tasksUpdated);
+  };
+
   const saveTask = (title) => {
     const newTask = {
       id: uuid.v1(),
@@ -43,7 +57,20 @@ export const AppContextWrapper = (props) => {
     setTasks(tasksCopy);
   };
 
-  const state = { tasks, setTasks, setTaskStatus, saveTask, sortTasks };
+  const deleteTask = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  };
+
+  const state = {
+    tasks,
+    setTasks,
+    setTaskStatus,
+    saveTask,
+    sortTasks,
+    setTaskTitle,
+    deleteTask,
+  };
 
   return (
     <AppContext.Provider value={state} displayName="AppContext">
