@@ -1,0 +1,2 @@
+body{font-family:"Roboto",sans-serif;margin:0}.TaskFormContainer{display:flex;flex-direction:row;justify-content:space-between;width:100%}.TaskFormContainer__input{width:80%}.TaskFormContainer__button{width:18%}.TasksListContainer{width:100%;height:50vh;overflow-y:auto}.TaskItem__title{width:90%}.TaskItem__delete,.TaskItem__edit,.TaskItem__save{width:5%}.AppContainer{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;padding:0 30%}.sortItemsForm{width:10em}
+/*# sourceMappingURL=main.33453f5c.chunk.css.map */
