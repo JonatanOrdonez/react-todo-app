@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import useGetTasks from "./hooks/useGetTasks";
 import AppContext from "./store/AppContext";
-import SearchBar from "./components/SearchBar/SearchBar";
+import TaskForm from "./components/TaskForm/TaskForm";
+import TasksList from "./components/TasksList/TasksList";
 import "./App.scss";
+import SortItems from "./components/SortItems/SortItems";
 
 const App = () => {
   const { tasks } = useGetTasks();
@@ -10,11 +12,14 @@ const App = () => {
 
   useEffect(() => {
     state.setTasks(tasks);
+    //eslint-disable-next-line
   }, [tasks]);
 
   return (
     <div className="AppContainer">
-      <SearchBar />
+      <TaskForm />
+      <SortItems />
+      <TasksList />
     </div>
   );
 };

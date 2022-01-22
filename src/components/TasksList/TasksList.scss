@@ -1,0 +1,20 @@
+.TasksListContainer {
+  width: 100%;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.TaskItem {
+  &__title {
+    width: 90%;
+  }
+  &__edit {
+    width: 5%;
+  }
+  &__save {
+    width: 5%;
+  }
+  &__delete {
+    width: 5%;
+  }
+}
